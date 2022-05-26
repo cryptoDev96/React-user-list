@@ -6,46 +6,46 @@ import axios from 'axios';
 class Dashboard extends React.Component {
 
     constructor(props) {
+        
         super(props);
         this.state = {
-            userList: []
+            componentUsers: []
         }
+        
     }
-
+    
+    
     componentDidMount() {
+
         this.getUserData();
         window.addEventListener('scroll', () => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-               console.log("you're at the bottom of the page");
-               // Show loading spinner and make fetch request to api
-               this.getUserData();     
+                console.log("you're at the bottom of the page");
+                // Show loading spinner and make fetch request to api
+                this.getUserData();    
             }
         });
+
     }
    
     getUserData = () => {
-        // const [userData, setUserData] = useState([]);
-        // useEffect(() =>  {
-        //     const loadData = async () => {
-        //         const response = await axios.get("https://randomuser.me/api/");
-        //         setUserData(response.data);
-        //         console.log(userData);
-        //     }
-        //     loadData();
-        // }, []);
-        let oldList, newList = [];
 
         const loadData = async () => {
             const response = await axios.get("https://randomuser.me/api/?results=20");
-            oldList = this.state.userList;
-            newList = oldList.push(response.data.results);
-            console.log(newList.length);
-            this.setState({userList: response.data.results});
+            
+            response.data.results.map((user, i) => {
+                
+                this.setState(prevState => ({
+                    componentUsers: [...prevState.componentUsers, <UserInfo key={user.login.uuid} user={user} />]
+                }));
+            });
         }
+
         loadData();
     }
 
     render() {
+        
         return (
             <div className='content' >
                 <div className='selectGender'>
@@ -56,9 +56,7 @@ class Dashboard extends React.Component {
                     </select>
                 </div>
                 <div className='userList'>
-                    {this.state.userList.map((user, i) => {
-                        return <UserInfo key={i} user={user} />
-                    })}
+                    {this.state.componentUsers}
                 </div>
             </div>
         )
