@@ -1,10 +1,8 @@
 .content {
-    /* background-color: blue; */
     padding: 40px;
 }
 
 .selectGender {
-    /* background-color: red; */
     text-align: center;
 }
 
@@ -23,6 +21,15 @@
     overflow: hidden;
     border: 1px solid rgb(170, 170, 170);
     text-align: center;
+    position: relative;
+}
+
+.card:hover {
+    box-shadow:  2px 2px 4px 3px rgba(0, 0, 0, 0.39);
+}
+
+.card:hover .close-icon{
+    display: block;
 }
 
 .cardHeader {
@@ -60,7 +67,6 @@
 
 .userList {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 10px;
 }
@@ -84,4 +90,21 @@
     font-weight: var(--chakra-fontWeights-bold);
     line-height: 1.2;
     border-radius: var(--chakra-radii-md);
+}
+
+.close-icon {
+    width: var(--chakra-sizes-10);
+    height: var(--chakra-sizes-10);
+    display: none;
+    line-height: 1em;
+    flex-shrink: 0;
+    color: var(--chakra-colors-white);
+    vertical-align: middle;
+    cursor: pointer;
+    background: rgb(48, 70, 84);
+    border-radius: 50%;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
