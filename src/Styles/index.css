@@ -69,6 +69,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
+    justify-content: space-around;
 }
 
 .userImg {
@@ -107,4 +108,62 @@
     position: absolute;
     right: 10px;
     top: 10px;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10001;
+}
+
+.modal-main{
+    width: 400px;
+    height: 300px;
+    background: var(--chakra-colors-white);
+    border-radius: 20px;
+    border: 10px solid grey;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.modal-main p {
+    font-size: var(--chakra-fontSizes-lg);
+    margin-top: 10px;
+}
+
+.modal-button {
+    background: var(--chakra-colors-blue-500);
+    color: var(--chakra-colors-white);
+    margin-top: 40px;
+    width: 180px;
+    line-height: 1.2;
+    height: var(--chakra-sizes-10);
+    border-radius: var(--chakra-radii-md);
+}
+
+.modal-name {
+    font-size: var(--chakra-fontSizes-xl);
+}
+
+@media screen and (min-width: 80em) {
+    .userList {
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+    }
 }

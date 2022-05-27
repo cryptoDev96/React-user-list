@@ -2,6 +2,7 @@ import React from 'react';
 import UserInfo from '../userInfo';
 import "../../Styles/index.css";
 import axios from 'axios';
+import UserModal from '../userModal';
 
 class Dashboard extends React.Component {
 
@@ -9,7 +10,9 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             componentUsers: [],
-            filterGender: "all"
+            filterGender: "all",
+            show: false,
+            modalData: []
         }
     }
     
@@ -37,20 +40,38 @@ class Dashboard extends React.Component {
         loadData();
     }
 
-    handleCallback = (childUserID) => {
-        const filteredUsers = this.state.componentUsers.filter((item) => 
+    handleCallback = (childUserID, show) => {
+        if(!show) {
+            const filteredUsers = this.state.componentUsers.filter((item) => 
             item.key !== childUserID
-        );
-        this.setState({componentUsers: filteredUsers});
+            );
+            this.setState({componentUsers: filteredUsers});
+        } 
+        else {
+            const modalData = this.state.componentUsers.filter((item) => item.key === childUserID)
+            this.setState({
+                show: show,
+                modalData: modalData
+            });
+        }
+            
     }
 
     selectGender = (event) => {
         this.setState({filterGender: event.target.value});
     }
 
+    hideModal = () => {
+        this.setState({show: false});
+    }
+
     render() {
         return (
+            
             <div className='content' >
+                <UserModal show={this.state.show} modalData={this.state.modalData} handleClose={this.hideModal} >
+           
+                </UserModal>
                 <div className='selectGender'>
                     <select className='genderFilter chakra-select' onChange={this.selectGender}>
                         <option value="all">No filter</option>
