@@ -3,9 +3,7 @@ import "../../Styles/index.css";
 
 const UserModal = ({handleClose, show, modalData}) => {
     const showHideClassName = show? "modal display-block" : "display-none"
-    
     return (
-        
             <div className={showHideClassName}>
                 <div className='modal-main'>
                     {modalData.map((item, i) => {
@@ -21,7 +19,6 @@ const UserModal = ({handleClose, show, modalData}) => {
                     </button>
                 </div>
             </div>
-            
         )
 }
 

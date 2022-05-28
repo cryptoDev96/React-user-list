@@ -3,7 +3,7 @@ import UserInfo from '../UserInfo';
 import "../../Styles/index.css";
 import axios from 'axios';
 import UserModal from '../UserModal';
-//start git redux-saga
+
 const Dashboard = () => {
     const [componentUser, setComponentUser] = useState([]);
     const [filterGender, setFilterGender] = useState("all");
