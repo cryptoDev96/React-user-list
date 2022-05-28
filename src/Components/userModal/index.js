@@ -3,7 +3,7 @@ import "../../Styles/index.css";
 
 const UserModal = ({handleClose, show, modalData}) => {
     const showHideClassName = show? "modal display-block" : "display-none"
-    // {setUser(modalData)}
+    
     return (
         
             <div className={showHideClassName}>
