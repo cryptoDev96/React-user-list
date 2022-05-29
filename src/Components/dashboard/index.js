@@ -1,19 +1,21 @@
 import React, {useState, useEffect, useRef} from 'react';
 import UserInfo from '../UserInfo';
+import UserModal from '../UserModal';
 import "../../Styles/index.css";
 import axios from 'axios';
-import UserModal from '../UserModal';
 
 const Dashboard = () => {
     const [componentUser, setComponentUser] = useState([]);
     const [filterGender, setFilterGender] = useState("all");
     const [show, setShow] = useState(false);
     const [modalData, setModalData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const stateRef = useRef();
     stateRef.current = componentUser;
 
     useEffect(() => {
         const getData = async () => {
+            setLoading(true);
             const response = await axios.get(
             "https://randomuser.me/api/?results=20"
             );
@@ -21,6 +23,7 @@ const Dashboard = () => {
                 setComponentUser(componentUser => [...componentUser,
                     <UserInfo parentCallback={handleCallback} key={user.login.uuid} user={user} />]);
             });
+            setLoading(true);
         };
         getData();
         window.addEventListener('scroll', () => {
@@ -30,7 +33,8 @@ const Dashboard = () => {
                 getData();    
             }
         });
-    }, []);
+    }, []); 
+
     const handleCallback = (childUserID, show) => {
         if(!show) {
             const filteredUsers = stateRef.current.filter((item) => 
@@ -54,25 +58,25 @@ const Dashboard = () => {
     }
     
     return (
-        <div className='content' >
+        <div className='Content' >
             <UserModal show={show} modalData={modalData} handleClose={hideModal} >
             </UserModal>
-            <div className='selectGender'>
-                <select className='genderFilter chakra-select' onChange={selectGender}>
+            <div className='Select-gender'>
+                <select className='Gender-filter' onChange={selectGender}>
                     <option value="all">No filter</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
-            <div className='userList'>
-                {(filterGender === "all") ? 
+            <div className='User-list'>
+                { (filterGender === "all") ? 
                 (componentUser) :
                 (componentUser.map((user, i) => {
                     if(user.props.user.gender === filterGender)
                         return user;
-                }))
-                }
+                }))}
             </div>
+            {loading && <div className='Loader'></div>}
         </div>
     )
 }

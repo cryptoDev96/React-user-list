@@ -1,20 +1,26 @@
-.content {
+* {
+    box-sizing: border-box;
+    font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+.Content {
     padding: 40px;
 }
 
-.selectGender {
+.Select-gender {
     text-align: center;
+    border: #e2e8f0;
 }
 
-.genderFilter {
+.Gender-filter {
     width: 300px; 
     height: 40px;
-    border-radius: var(--chakra-radii-md);
+    border-radius: 7px;
     padding: 2px 17px;
-    border: 2px solid var(--chakra-colors-gray-200);
+    border: 2px solid #e2e8f0;
+    font-size: 16px;
 }
 
-.card {
+.Card {
     width: 260px;
     height: 380px;
     margin: 10px;
@@ -24,35 +30,35 @@
     position: relative;
 }
 
-.card:hover {
+.Card:hover {
     box-shadow:  2px 2px 4px 3px rgba(0, 0, 0, 0.39);
 }
 
-.card:hover .close-icon{
+.Card:hover .Close-icon{
     display: block;
 }
 
-.cardHeader {
-    width: var(--chakra-sizes-full);
+.Card-header {
+    width: 100%;
     height: 120px;
-    color: var(--chakra-colors-white);
+    color: white;
     text-align: left;
     background-image: radial-gradient(rgb(58, 115, 153), rgb(26, 75, 114));
 }
 
-.userName {
-    font-size: var(--chakra-fontSizes-xl);
-    font-weight: var(--chakra-fontWeights-bold);
+.User-name {
+    font-size: 20px;
+    font-weight: 700;
     margin-top: 10px;
 }
 
-.userGender {
-    font-size: var(--chakra-fontSizes-md);
+.User-gender {
+    font-size: 16px;
     color: rgb(136, 136, 136);
     margin-top: 10px;
 }
 
-.cardImg {
+.Card-img {
     width: 150px;
     height: 150px;
     margin-top: -75px;
@@ -60,46 +66,45 @@
     border: 1px solid rgb(204, 204, 204);
 }
 
-.cardImgContent {
+.Card-img-content {
     display: flex;
     justify-content: center;
 }
 
-.userList {
+.User-list {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
     justify-content: space-around;
 }
 
-.userImg {
+.User-img {
     border-radius: 50%;
     border: 10px solid white;
-    width: var(--chakra-sizes-full);
-    height: var(--chakra-sizes-full);
+    width: 100%;
+    height: 100%;
 }
 
-.userBtn {
+.User-btn {
     width: 180px;
-    height: var(--chakra-sizes-10);
-    font-size: var(--chakra-fontSizes-md);
+    height: 40px;
     border: 1px solid currentcolor;
-    color: var(--chakra-colors-blue-600);
-    background: var(--chakra-colors-transparent);
-    margin-top: 40px;
-    padding: 0px 16px;
-    font-weight: var(--chakra-fontWeights-bold);
-    line-height: 1.2;
-    border-radius: var(--chakra-radii-md);
+    border-radius: 7px;
+    font-size: 16px;
+    color: #2b6cb0;
+    background: transparent;
+    margin-top: 25px;
+    padding: 6 16px;
+    font-weight: 700;
 }
 
-.close-icon {
-    width: var(--chakra-sizes-10);
-    height: var(--chakra-sizes-10);
+.Close-icon {
+    width: 40px;
+    height: 40px;
     display: none;
     line-height: 1em;
     flex-shrink: 0;
-    color: var(--chakra-colors-white);
+    color: white;
     vertical-align: middle;
     cursor: pointer;
     background: rgb(48, 70, 84);
@@ -110,15 +115,15 @@
     top: 10px;
 }
 
-.display-block {
+.Display-block {
     display: block;
 }
 
-.display-none {
+.Display-none {
     display: none;
 }
 
-.modal {
+.Modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -128,10 +133,10 @@
     z-index: 10001;
 }
 
-.modal-main{
+.Modal-main{
     width: 400px;
     height: 300px;
-    background: var(--chakra-colors-white);
+    background: white;
     border-radius: 20px;
     border: 10px solid grey;
     padding: 50px;
@@ -142,27 +147,46 @@
     text-align: center;
 }
 
-.modal-main p {
-    font-size: var(--chakra-fontSizes-lg);
+.Modal-main p {
+    font-size: 18px;
     margin-top: 10px;
 }
 
-.modal-button {
-    background: var(--chakra-colors-blue-500);
-    color: var(--chakra-colors-white);
-    margin-top: 40px;
+.Modal-btn {
+    background: #3182ce;
+    color: white;
+    margin-top: 25px;
     width: 180px;
-    line-height: 1.2;
-    height: var(--chakra-sizes-10);
-    border-radius: var(--chakra-radii-md);
+    height: 40px;
+    border-radius:7px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
 }
 
-.modal-name {
-    font-size: var(--chakra-fontSizes-xl);
+.Modal-name {
+    font-size: 20px;
+}
+
+.Loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid #3182ce;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 0.5s linear infinite; /* Safari */
+    animation: spin 0.5s linear infinite;
+    position: relative;
+    left: 50%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @media screen and (min-width: 80em) {
-    .userList {
+    .User-list {
         -webkit-box-pack: start;
         justify-content: flex-start;
     }
